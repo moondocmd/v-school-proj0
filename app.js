@@ -3,11 +3,8 @@ class TextInput{
         this.val = val;
     }
     reverse(){
-        this.val = this.val.split("").reverse();
+        this.val = this.val.split("").reverse().join(""); 
         return this.val;
-    }
-    explode(){
-        return this.val.toString().split("").join("    ");
     }
     getVowels(){
         var vowels = ["a", "e", "i", "o", "u"];
@@ -23,8 +20,9 @@ class TextInput{
     getFirst(){
         if (!this.val){return ''}
         else{
-            var strArr = this.val.toString().split("");
-            return strArr[0];
+            var textInput = this.val.toString().trim(); // lets remove any whitespace so we can get the first letter
+            var strArr = textInput.split(""); // create an array of characters
+            return strArr[0].toString();
         }
     }
 }
@@ -35,8 +33,7 @@ window.onload = function(){
         document.getElementById("reversed").innerHTML = text_input.reverse();
         document.getElementById("vowels").innerHTML = text_input.getVowels();
         document.getElementById("first_letter").innerHTML = text_input.getFirst();
-    
-}
+    }
     var submitButton = document.getElementById ("sButton");
     if(submitButton.addEventListener) {
         submitButton.addEventListener("click", reverseText);
